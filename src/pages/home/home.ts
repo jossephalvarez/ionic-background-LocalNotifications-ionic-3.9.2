@@ -4,8 +4,7 @@ import {
   BackgroundGeolocation,
   BackgroundGeolocationConfig,
   BackgroundGeolocationResponse
-} from "@ionic-native/background-geolocation/ngx";
-import {LocalNotifications} from "@ionic-native/local-notifications/ngx";
+} from "@ionic-native/background-geolocation";
 
 @Component({
   selector: 'page-home',
@@ -22,19 +21,19 @@ export class HomePage {
   };
 
   constructor(public navCtrl: NavController,
-              private backgroundGeolocation: BackgroundGeolocation,
-              private localNotifications: LocalNotifications) {
+              private backgroundGeolocation: BackgroundGeolocation) {
 
     this.backgroundGeolocation.configure(this.config)
-      .then((location: BackgroundGeolocationResponse) => {
+      .subscribe((location: BackgroundGeolocationResponse) => {
         console.log(location);
-        this.showNotification(location)
+        this.showNotification(location);
         // IMPORTANT:  You must execute the finish method here to inform the native plugin that you're finished,
         // and the background-task may be completed.  You must do this regardless if your HTTP request is successful or not.
         // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
         this.backgroundGeolocation.finish(); // FOR IOS ONLY
       });
   }
+
   startBackgroundGeolocation() {
     // start recording location
     this.backgroundGeolocation.start();
@@ -45,13 +44,14 @@ export class HomePage {
     this.backgroundGeolocation.stop();
   }
 
-  showNotification(data){
+  showNotification(data) {
     // Schedule a single notification
-    this.localNotifications.schedule({
+    //TODO descomentar cuando se logre localnotifications
+    /*this.localNotifications.schedule({
       id: 1,
       text: JSON.stringify(data),
       sound: 'file://sound.mp3',
-      data: { secret: "key" }
-    });
+      data: {secret: "key"}
+    });*/
   }
 }
