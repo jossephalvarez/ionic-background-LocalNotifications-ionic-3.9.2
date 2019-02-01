@@ -5,6 +5,7 @@ import {
   BackgroundGeolocationConfig,
   BackgroundGeolocationResponse
 } from "@ionic-native/background-geolocation";
+import {LocalNotifications} from "@ionic-native/local-notifications";
 
 @Component({
   selector: 'page-home',
@@ -21,7 +22,8 @@ export class HomePage {
   };
 
   constructor(public navCtrl: NavController,
-              private backgroundGeolocation: BackgroundGeolocation) {
+              private backgroundGeolocation: BackgroundGeolocation,
+              public localNotifications:LocalNotifications) {
 
     this.backgroundGeolocation.configure(this.config)
       .subscribe((location: BackgroundGeolocationResponse) => {
@@ -47,11 +49,11 @@ export class HomePage {
   showNotification(data) {
     // Schedule a single notification
     //TODO descomentar cuando se logre localnotifications
-    /*this.localNotifications.schedule({
+    this.localNotifications.schedule({
       id: 1,
       text: JSON.stringify(data),
       sound: 'file://sound.mp3',
       data: {secret: "key"}
-    });*/
+    });
   }
 }

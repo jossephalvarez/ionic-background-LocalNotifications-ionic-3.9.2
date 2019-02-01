@@ -7,6 +7,7 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
 import {BackgroundGeolocation} from "@ionic-native/background-geolocation";
+import {LocalNotifications} from "@ionic-native/local-notifications";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {BackgroundGeolocation} from "@ionic-native/background-geolocation";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    BackgroundGeolocation
+    BackgroundGeolocation,
+    LocalNotifications
   ]
 })
 export class AppModule {
