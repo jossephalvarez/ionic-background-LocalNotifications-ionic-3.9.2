@@ -8,6 +8,7 @@ import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
 import {BackgroundGeolocation} from "@ionic-native/background-geolocation";
 import {LocalNotifications} from "@ionic-native/local-notifications";
+import {Geolocation} from "@ionic-native/geolocation";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {LocalNotifications} from "@ionic-native/local-notifications";
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BackgroundGeolocation,
-    LocalNotifications
+    LocalNotifications,
+    Geolocation
   ]
 })
 export class AppModule {
