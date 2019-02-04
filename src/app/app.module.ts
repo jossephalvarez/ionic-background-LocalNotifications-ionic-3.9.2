@@ -11,6 +11,7 @@ import {LocalNotifications} from "@ionic-native/local-notifications";
 import {Geolocation} from "@ionic-native/geolocation";
 import {BackgroundMode} from "@ionic-native/background-mode";
 import {PokemonGoSimulatePageModule} from "../pages/pokemon-go-simulate/pokemon-go-simulate.module";
+import {BackgroundGeoPageModule} from "../pages/background-geo/background-geo.module";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {PokemonGoSimulatePageModule} from "../pages/pokemon-go-simulate/pokemon-
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    PokemonGoSimulatePageModule
+    PokemonGoSimulatePageModule,
+    BackgroundGeoPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

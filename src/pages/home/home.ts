@@ -7,6 +7,7 @@ import {
 } from "@ionic-native/background-geolocation";
 import {LocalNotifications} from "@ionic-native/local-notifications";
 import {PokemonGoSimulatePage} from "../pokemon-go-simulate/pokemon-go-simulate";
+import {BackgroundGeoPage} from "../background-geo/background-geo";
 
 @Component({
   selector: 'page-home',
@@ -49,6 +50,10 @@ export class HomePage {
 
   goToPokemonGoPage(){
     this.navCtrl.push(PokemonGoSimulatePage)
+  }
+  goToBackGroundGeo2(){
+    this.navCtrl.push(BackgroundGeoPage)
+
   }
   showNotification(data) {
     // Schedule a single notification

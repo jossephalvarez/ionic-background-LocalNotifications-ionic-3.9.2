@@ -6,15 +6,16 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <p text-center>
-    Pulsa un boton
-  </p>
-  <button ion-button (click)="startBackgroundGeolocation()">Start Background Geolocation</button>
-  <button ion-button (click)="stopBackgroundGeolocation()">Stop Background Geolocation</button>
+<ion-content padding text-center>
 
+  <h2>Ejemplo 1 </h2>
+  <button ion-button full text-center (click)="startBackgroundGeolocation()">Start Background Geolocation</button>
+  <button ion-button full text-center (click)="stopBackgroundGeolocation()">Stop Background Geolocation</button>
 
+  <h2>Ejemplo 2</h2>
   <button ion-button full text-center (click)="goToPokemonGoPage()" color="secondary">GO TO POKEMON GO!</button>
+  <h2>Ejemplo 3</h2>
+  <button ion-button full text-center (click)="goToBackGroundGeo2()" color="danger">GO BackgroundGeo 2!</button>
 
 
 </ion-content>
