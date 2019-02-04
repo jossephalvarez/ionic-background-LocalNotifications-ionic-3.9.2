@@ -9,6 +9,7 @@ import {HomePage} from '../pages/home/home';
 import {BackgroundGeolocation} from "@ionic-native/background-geolocation";
 import {LocalNotifications} from "@ionic-native/local-notifications";
 import {Geolocation} from "@ionic-native/geolocation";
+import {PokemonGoSimulatePageModule} from "../pages/pokemon-go-simulate/pokemon-go-simulate.module";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {Geolocation} from "@ionic-native/geolocation";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    PokemonGoSimulatePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
