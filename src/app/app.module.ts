@@ -9,6 +9,7 @@ import {HomePage} from '../pages/home/home';
 import {BackgroundGeolocation} from "@ionic-native/background-geolocation";
 import {LocalNotifications} from "@ionic-native/local-notifications";
 import {Geolocation} from "@ionic-native/geolocation";
+import {BackgroundMode} from "@ionic-native/background-mode";
 import {PokemonGoSimulatePageModule} from "../pages/pokemon-go-simulate/pokemon-go-simulate.module";
 
 @NgModule({
@@ -32,7 +33,8 @@ import {PokemonGoSimulatePageModule} from "../pages/pokemon-go-simulate/pokemon-
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BackgroundGeolocation,
     LocalNotifications,
-    Geolocation
+    Geolocation,
+    BackgroundMode
   ]
 })
 export class AppModule {
