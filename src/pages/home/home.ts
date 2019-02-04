@@ -35,7 +35,7 @@ export class HomePage {
         // and the background-task may be completed.  You must do this regardless if your HTTP request is successful or not.
         // IF YOU DON'T, ios will CRASH YOUR APP for spending too much time in the background.
         this.backgroundGeolocation.finish(); // FOR IOS ONLY
-      });
+      },error=>console.log(error));
   }
 
   startBackgroundGeolocation() {
