@@ -26,15 +26,6 @@ export class BackgroundGeoPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private backgroundGeolocation: BackgroundGeolocation, private geolocation: Geolocation) {
 
-    /*geolocation.getCurrentPosition()
-      .then(position => {
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
-        this.loadMap();
-      })
-      .catch((error) => {
-        this.navCtrl.pop();
-      });*/
   }
 
   ionViewDidLoad() {
@@ -42,23 +33,25 @@ export class BackgroundGeoPage {
   }
 
   loadMap() {
-    this.lat = 37.3675506;
-    this.lng = -6.0452695;
-    this.map = new google.maps.Map(this.mapElement.nativeElement, {
-      zoom: 13,
-      center: {lat: parseFloat(this.lat), lng: parseFloat(this.lng)},
-      zoomControl: true,
-      draggable: true,
-      scaleControl: false,
-      scrollwheel: false,
-      disableDoubleClickZoom: false,
-      disableDefaultUI: false,
-      streetViewControl: false,
-      mapTypeControl: false,
-      fullscreenControl: false,
-    });
-    //this.printPolylines();
-    this.addMarkers();
+    if (this.logs.length > 0) {
+      this.lat = this.logs[0].lat;
+      this.lng = this.logs[0].lng;
+      this.map = new google.maps.Map(this.mapElement.nativeElement, {
+        zoom: 13,
+        center: {lat: parseFloat(this.lat), lng: parseFloat(this.lng)},
+        zoomControl: true,
+        draggable: true,
+        scaleControl: false,
+        scrollwheel: false,
+        disableDoubleClickZoom: false,
+        disableDefaultUI: false,
+        streetViewControl: false,
+        mapTypeControl: false,
+        fullscreenControl: false,
+      });
+      this.addMarkers();
+      this.redrawPath();
+    }
   }
 
 
@@ -116,32 +109,23 @@ export class BackgroundGeoPage {
     }, error => console.log(error))
   }
 
-  printPolylines() {
-    if (this.logs.length > 0) {
-      this.logs.forEach(coord => {
-        alert(coord.lat + "-" + coord.lng);
-        this.redrawPath(coord);
-      })
-    }
-  }
 
-  redrawPath(path) {
-    if (path.lat && path.lng) {
-      this.currentMapTrack = new google.maps.Polyline({
-        path: path,
-        geodesic: true,
-        strokeColor: '#ff00ff',
-        strokeOpacity: 1.0,
-        strokeWeight: 3
-      });
-      this.currentMapTrack.setMap(this.map);
-    }
+  redrawPath() {
+    var line = new google.maps.Polyline({
+      path: this.logs,
+      geodesic: true,
+      strokeColor: '#ff0000',
+      strokeOpacity: 0.4,
+      strokeWeight: 8,
+      editable: true // if you dont want to see the editable point change it to false
+    });
+    //set map
+    line.setMap(this.map);
   }
 
   addMarkers() {
     if (this.logs.length > 0) {
       this.logs.forEach(coord => {
-        alert(coord.lat + "-" + coord.lng);
         let urlIcon = {
           url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png",
           scaledSize: new google.maps.Size(27, 43)
